@@ -1,0 +1,8 @@
+
+<% if flash[:notice] %>
+  <p class="saccess-message"><%= flash[:notice]%></p>
+<% end %>
+<p class="title">tltle:<%= @book.title %></p> 
+<p class="body">body:<%= @book.body %></p></br>
+
+<%= link_to "Edit", edit_book_path %>|<%= link_to "Back", books_path %>

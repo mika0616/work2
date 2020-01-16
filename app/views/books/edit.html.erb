@@ -1,0 +1,32 @@
+<h1>Editing Book</h1>
+<%= form_for(@book,url:"/books/#{@book.id}") do |f| %>
+  <!-- ブランクならエラーメッセージを表示 -->
+  <% if @book.errors.any? %>
+   <div id="error_explanation" class="alert alert-danger">
+   	<h2><%= pluralize(@book.errors.count, "error") %>error prohibited this book from being saved:</h2>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <!-- ここまでがエラーメッセージコマンド -->
+
+  <div class="field">
+  	<%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body, class:"book_body" %>
+  </div>
+
+  <div class="actions">
+  	</br><%= f.submit 'Update Book' %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Show', book_path(@book.id) %>|<%= link_to 'Back', books_path %>
+
